@@ -10,7 +10,7 @@ export const AppDataSource = new DataSource({
     username: Config.DB_USERNAME,
     password: Config.DB_PASSWORD,
     database: Config.DB_NAME,
-    synchronize: true,
+    synchronize: false,
     logging: false,
     entities: [Todo],
     migrations: ['src/migration/*.ts'],
