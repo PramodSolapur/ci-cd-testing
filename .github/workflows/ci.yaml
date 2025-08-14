@@ -35,7 +35,7 @@ jobs:
                   DB_HOST: localhost
                   DB_PORT: 5432
                   DB_USERNAME: testuser
-                  DB_PASSWORD: testuser
+                  DB_PASSWORD: testpass
                   DB_NAME: testdb
             - name: Build-ts
               run: npm run build
