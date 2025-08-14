@@ -31,24 +31,3 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-    # build-and-push-docker:
-    #     name: Build and Push Docker Image
-    #     needs: build-and-test
-    #     runs-on: ubuntu-latest
-    #     env:
-    #         IMAGE_NAME: jsnode/cicd_testing
-    #         IMAGE_TAG: build-${{ github.run_number }}
-    #     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    #     steps:
-    #         - name: Checkout repository
-    #           uses: actions/checkout@v4
-    #         - name: Log in to Docker hub
-    #           uses: docker/login-action@v1
-    #           with:
-    #               username: ${{ secrets.DOCKERHUB_USERNAME }}
-    #               password: ${{ secrets.DOCKERHUB_PASSWORD }}
-    #         - name: Build Docker image
-    #           run: docker build -t ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} -f docker/Dockerfile .
-    #         - name: Push Docker image to Docker hub
-    #           run: docker push ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}

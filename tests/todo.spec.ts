@@ -16,9 +16,9 @@ describe('Todo Service', () => {
         await connection.synchronize()
     })
 
-    // afterAll(async () => {
-    //     await connection.destroy()
-    // })
+    afterAll(async () => {
+        await connection.destroy()
+    })
 
     it('should return 400 status code if title is missing', async () => {
         const todoData = {
