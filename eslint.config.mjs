@@ -13,6 +13,8 @@ export default tseslint.config(
             'node_modules',
             'jest.config.js',
             './tests',
+            './coverage',
+            './dist',
         ],
     },
     {
