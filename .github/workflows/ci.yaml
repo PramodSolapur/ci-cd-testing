@@ -10,6 +10,19 @@ jobs:
     build-and-test:
         name: Build the project
         runs-on: ubuntu-latest
+        services:
+            postgres:
+                image: postgres:15
+                ports: [5432:5432]
+                env:
+                    POSTGRES_USER: testuser
+                    POSTGRES_PASSWORD: testpass
+                    POSTGRES_DB: testdb
+                options: >-
+                    --health-cmd="pg_isready -U testuser"
+                    --health-interval=10s
+                    --health-timeout=5s
+                    --health-retries=5
         steps:
             - uses: actions/checkout@v4
             - name: Install dependencies
@@ -19,11 +32,11 @@ jobs:
             - name: Test and Coverage
               run: npm run test
               env:
-                  DB_HOST: db.ilggocztfygakyoidvux.supabase.co
+                  DB_HOST: localhost
                   DB_PORT: 5432
-                  DB_USERNAME: postgres
-                  DB_PASSWORD: PumpX8ZIkYQzRuz2
-                  DB_NAME: postgres
+                  DB_USERNAME: testuser
+                  DB_PASSWORD: testuser
+                  DB_NAME: testdb
             - name: Build-ts
               run: npm run build
             - name: SonarCloud Scan
