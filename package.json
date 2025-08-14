@@ -5,7 +5,7 @@
    "scripts": {
       "dev": "nodemon src/server.ts",
       "build": "tsc",
-      "start": "ts-node src/index.ts",
+      "start": "ts-node src/server.ts",
       "eslint": "eslint .",
       "eslint:fix": "eslint . --fix",
       "format:fix": "prettier . --write",
